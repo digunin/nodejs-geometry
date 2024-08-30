@@ -19,11 +19,11 @@ export class Polygon extends Figure {
   }
 
   public override getPerimeter(): number {
-    return -1;
+    return this._computing.getPolygonPerimeter(this);
   }
 
   public override getSquare(): number {
-    return -1;
+    return this._computing.getPolygonSquare(this);
   }
 
   private isCorrectEdges(edges: number[]): boolean {
@@ -32,5 +32,13 @@ export class Polygon extends Figure {
       if (edge >= edgesSum - edge) return false;
     }
     return true;
+  }
+
+  public get edges() {
+    return [...this._edges];
+  }
+
+  public get edgeQuantity() {
+    return this._edges.length;
   }
 }

@@ -16,9 +16,17 @@ export class Ellipse extends Figure {
   }
 
   public override getPerimeter(): number {
-    return -1;
+    return this._computing.getEllipsePerimeter(this);
   }
   public override getSquare(): number {
-    return -1;
+    return this._computing.getEllipseSquare(this);
+  }
+
+  public get minorRadius() {
+    return this._minorRadius;
+  }
+
+  public get majorRadius() {
+    return this._majorRadius;
   }
 }

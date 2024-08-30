@@ -1,3 +1,4 @@
+import { GeometryComputing } from '../GeometryComputing.js';
 import { Polygon } from './Polygon.js';
 
 export class Rectangle extends Polygon {
@@ -12,5 +13,17 @@ export class Rectangle extends Polygon {
 
   public override draw(): void {
     console.log(`Rectangle with height ${this._height} and width ${this._width}`);
+  }
+
+  public override getSquare(): number {
+    return this._computing.getRectangleSquare(this);
+  }
+
+  public get width() {
+    return this._width;
+  }
+
+  public get height() {
+    return this._height;
   }
 }

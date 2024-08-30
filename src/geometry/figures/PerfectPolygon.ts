@@ -18,4 +18,12 @@ export class PerfectPolygon extends Polygon {
   override draw(): void {
     console.log(`${this._edges.length}-edges perfect polygon with edge size ${this._edge}`);
   }
+
+  public override getSquare(): number {
+    return this._computing.getPerfectPolygonSquare(this);
+  }
+
+  public get edge() {
+    return this._edge;
+  }
 }

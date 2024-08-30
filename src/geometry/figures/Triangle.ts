@@ -6,9 +6,9 @@ export class Triangle extends Polygon {
     super(computing, edg1, edge2, edge3);
     this._type = 'triangle';
   }
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+
   public getAngle(edge1: number, edge2: number): number {
-    return -1;
+    return this._computing.getAngleBetweenTriangleEdges(edge1, edge2, this);
   }
 
   public get angles(): number[] {
@@ -16,5 +16,14 @@ export class Triangle extends Polygon {
     const angle2 = this.getAngle(this._edges[2], this._edges[1]);
     const angle3 = this.getAngle(this._edges[2], this._edges[0]);
     return [angle1, angle2, angle3];
+  }
+
+  public override getSquare(): number {
+    return this._computing.getTriangleSquare(this);
+  }
+
+  public override draw(): void {
+    const [a, b, c] = this._edges;
+    console.log(`Triangle with edges ${a}, ${b}, ${c}`);
   }
 }
