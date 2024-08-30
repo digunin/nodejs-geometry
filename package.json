@@ -1,0 +1,17 @@
+{
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "lint": "npx eslint",
+    "fix": "npx eslint --fix",
+    "build": "npx tsc"
+  },
+  "devDependencies": {
+    "@types/node": "^22.5.1",
+    "eslint": "^9.9.1",
+    "globals": "^15.9.0",
+    "prettier": "^3.3.3",
+    "typescript": "^5.5.4",
+    "typescript-eslint": "^8.3.0"
+  }
+}
