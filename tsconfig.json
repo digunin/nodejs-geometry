@@ -4,7 +4,8 @@
     "allowJs": false,
     "outDir": "dist",
     "module": "NodeNext",
-    "target": "ES2018"
+    "target": "ES2018",
+    "noImplicitOverride": true
   },
   "include": ["./src"],
   "exclude": ["node_modules"]

@@ -4,7 +4,8 @@ export class Polygon extends Figure {
   protected _edges: number[];
 
   constructor(edge1: number, edge2: number, edge3: number, ...edges: number[]) {
-    super('polygon');
+    super();
+    this._type = 'polygon';
     const allEdges = [edge1, edge2, edge3, ...edges];
     if (!this.isCorrectEdges(allEdges)) {
       throw new Error('A polygon with such edges is impossible');
@@ -12,12 +13,16 @@ export class Polygon extends Figure {
     this._edges = allEdges;
   }
 
-  public draw() {
-    console.log(`${this._edges.length}-edges Polygon has been drawn`);
+  public override draw() {
+    console.log(`${this._edges.length}-edges Polygon`);
   }
 
-  public getPerimeter() {
-    return this._edges.reduce((edge1, edge2) => edge1 + edge2);
+  public override getPerimeter(): number {
+    return -1;
+  }
+
+  public override getSquare(): number {
+    return -1;
   }
 
   private isCorrectEdges(edges: number[]): boolean {

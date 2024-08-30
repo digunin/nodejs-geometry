@@ -5,14 +5,18 @@ export class Ellipse extends Figure {
     protected _minorRadius: number,
     protected _majorRadius: number,
   ) {
-    super('ellipse');
+    super();
+    this._type = 'ellipse';
   }
 
-  public draw() {
-    console.log(`Ellipse with radii ${this._minorRadius} and ${this._majorRadius} has been drawn`);
+  public override draw() {
+    console.log(`Ellipse with radii ${this._minorRadius} and ${this._majorRadius}`);
   }
 
-  public getPerimeter(): number {
-    return 0;
+  public override getPerimeter(): number {
+    return -1;
+  }
+  public override getSquare(): number {
+    return -1;
   }
 }

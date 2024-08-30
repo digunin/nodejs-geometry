@@ -3,12 +3,11 @@ import { FigureType } from '../types.js';
 export abstract class Figure {
   protected _type: FigureType = 'figure';
 
-  constructor(type: FigureType) {
-    this._type = type;
+  protected draw(): void {
+    console.log('Some figure');
   }
-
-  protected abstract draw(): void;
   public abstract getPerimeter(): number;
+  public abstract getSquare(): number;
 
   public get type() {
     return this._type;
