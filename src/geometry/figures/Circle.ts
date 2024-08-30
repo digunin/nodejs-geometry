@@ -1,8 +1,12 @@
+import { GeometryComputing } from '../GeometryComputing.js';
 import { Ellipse } from './Ellipse.js';
 
 export class Circle extends Ellipse {
-  constructor(protected _radius: number) {
-    super(_radius, _radius);
+  constructor(
+    computing: GeometryComputing,
+    protected _radius: number,
+  ) {
+    super(computing, _radius, _radius);
     this._type = 'circle';
   }
 

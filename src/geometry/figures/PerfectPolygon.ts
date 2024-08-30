@@ -1,7 +1,9 @@
+import { GeometryComputing } from '../GeometryComputing.js';
 import { Polygon } from './Polygon.js';
 
 export class PerfectPolygon extends Polygon {
   constructor(
+    computing: GeometryComputing,
     protected _edge: number,
     edgeQuantity: number,
   ) {
@@ -9,7 +11,7 @@ export class PerfectPolygon extends Polygon {
       throw new Error('Edge quantity of polygon must be atleast 3');
     }
     const [edge1, edge2, edge3, ...rest] = Array<number>(edgeQuantity).fill(_edge);
-    super(edge1, edge2, edge3, ...rest);
+    super(computing, edge1, edge2, edge3, ...rest);
     this._type = 'perfect polygon';
   }
 

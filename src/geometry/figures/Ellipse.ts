@@ -1,11 +1,13 @@
+import { GeometryComputing } from '../GeometryComputing.js';
 import { Figure } from './figure.js';
 
 export class Ellipse extends Figure {
   constructor(
+    computing: GeometryComputing,
     protected _minorRadius: number,
     protected _majorRadius: number,
   ) {
-    super();
+    super(computing);
     this._type = 'ellipse';
   }
 
