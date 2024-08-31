@@ -1,9 +1,16 @@
 import { GeometryComputing } from '../GeometryComputing.js';
 import { Polygon } from './Polygon.js';
+import { FigureEmitEventMethod } from './types.js';
 
 export class Triangle extends Polygon {
-  constructor(computing: GeometryComputing, edg1: number, edge2: number, edge3: number) {
-    super(computing, edg1, edge2, edge3);
+  constructor(
+    computing: GeometryComputing,
+    emitEvent: FigureEmitEventMethod,
+    edg1: number,
+    edge2: number,
+    edge3: number,
+  ) {
+    super(computing, emitEvent, edg1, edge2, edge3);
     this._type = 'triangle';
   }
 

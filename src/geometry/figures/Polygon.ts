@@ -1,11 +1,19 @@
 import { GeometryComputing } from '../GeometryComputing.js';
 import { Figure } from './figure.js';
+import { FigureEmitEventMethod } from './types.js';
 
 export class Polygon extends Figure {
   protected _edges: number[];
 
-  constructor(computing: GeometryComputing, edge1: number, edge2: number, edge3: number, ...edges: number[]) {
-    super(computing);
+  constructor(
+    computing: GeometryComputing,
+    emitEvent: FigureEmitEventMethod,
+    edge1: number,
+    edge2: number,
+    edge3: number,
+    ...edges: number[]
+  ) {
+    super(computing, emitEvent);
     this._type = 'polygon';
     const allEdges = [edge1, edge2, edge3, ...edges];
     if (!this.isCorrectEdges(allEdges)) {

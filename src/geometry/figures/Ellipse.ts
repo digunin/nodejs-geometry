@@ -1,13 +1,15 @@
 import { GeometryComputing } from '../GeometryComputing.js';
 import { Figure } from './figure.js';
+import { FigureEmitEventMethod } from './types.js';
 
 export class Ellipse extends Figure {
   constructor(
     computing: GeometryComputing,
+    emitEvent: FigureEmitEventMethod,
     protected _minorRadius: number,
     protected _majorRadius: number,
   ) {
-    super(computing);
+    super(computing, emitEvent);
     this._type = 'ellipse';
   }
 

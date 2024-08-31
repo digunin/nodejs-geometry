@@ -1,13 +1,15 @@
 import { GeometryComputing } from '../GeometryComputing.js';
 import { Polygon } from './Polygon.js';
+import { FigureEmitEventMethod } from './types.js';
 
 export class Rectangle extends Polygon {
   constructor(
     computing: GeometryComputing,
+    emitEvent: FigureEmitEventMethod,
     protected _width: number,
     protected _height: number,
   ) {
-    super(computing, _width, _height, _width, _height);
+    super(computing, emitEvent, _width, _height, _width, _height);
     this._type = 'rectangle';
   }
 
