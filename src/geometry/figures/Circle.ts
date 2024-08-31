@@ -12,7 +12,7 @@ export class Circle extends Ellipse {
     this._type = 'circle';
   }
 
-  public override draw(): void {
+  protected override _draw(): void {
     console.log(`Circle with radius ${this._radius}`);
   }
 

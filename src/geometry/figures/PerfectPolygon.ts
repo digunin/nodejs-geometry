@@ -17,7 +17,7 @@ export class PerfectPolygon extends Polygon {
     this._type = 'perfect polygon';
   }
 
-  override draw(): void {
+  protected override _draw(): void {
     console.log(`${this._edges.length}-edges perfect polygon with edge size ${this._edge}`);
   }
 

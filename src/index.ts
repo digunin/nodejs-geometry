@@ -1,5 +1,7 @@
 import { DefaultGeometry } from './geometry/DefaultGeometry.js';
 import { EuclidPlaneGeometryComputing } from './geometry/EuclidPlaneGeometryComputing.js';
+import { Polygon } from './geometry/figures/Polygon.js';
+import { FigureEvent } from './geometry/figures/types.js';
 
 const geometry = new DefaultGeometry(new EuclidPlaneGeometryComputing());
 const triangle = geometry.createTriangle(3, 4, 5);
@@ -24,7 +26,7 @@ console.log(ellipse.type);
 console.log('perimeter: ', ellipse.getPerimeter());
 console.log('square: ', ellipse.getSquare());
 
-const hexagon = geometry.createPerfectPolygon(5, 7);
+const hexagon = geometry.createPerfectPolygon(5, 6);
 console.log(hexagon.type);
 hexagon.draw();
 console.log(hexagon.getSquare());
@@ -43,3 +45,24 @@ try {
 } catch (e: unknown) {
   if (e instanceof Error) console.log(e.message);
 }
+
+const start_callback = function name(event: FigureEvent) {
+  console.log('\nstart drawing ' + event.target.type + ' >>>');
+  if (event.target instanceof Polygon) {
+    console.log(event.target.edges);
+  }
+};
+
+const finishcallback = function name(event: FigureEvent) {
+  console.log('<<< finish drawing ' + event.target.type + '\n');
+};
+geometry.subscribe('startdrawing', start_callback);
+geometry.subscribe('finishdrawing', finishcallback);
+ellipse.draw();
+polygon.draw();
+geometry.unsubscribe('finishdrawing', finishcallback);
+circle.draw();
+rect.draw();
+geometry.subscribe('finishdrawing', finishcallback);
+hexagon.draw();
+triangle.draw();

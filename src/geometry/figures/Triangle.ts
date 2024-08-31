@@ -29,7 +29,7 @@ export class Triangle extends Polygon {
     return this._computing.getTriangleSquare(this);
   }
 
-  public override draw(): void {
+  protected override _draw(): void {
     const [a, b, c] = this._edges;
     console.log(`Triangle with edges ${a}, ${b}, ${c}`);
   }

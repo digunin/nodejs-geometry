@@ -22,7 +22,7 @@ export class Polygon extends Figure {
     this._edges = allEdges;
   }
 
-  public override draw() {
+  protected override _draw() {
     console.log(`${this._edges.length}-edges Polygon`);
   }
 

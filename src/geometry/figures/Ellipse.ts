@@ -13,7 +13,7 @@ export class Ellipse extends Figure {
     this._type = 'ellipse';
   }
 
-  public override draw() {
+  protected override _draw() {
     console.log(`Ellipse with radii ${this._minorRadius} and ${this._majorRadius}`);
   }
 

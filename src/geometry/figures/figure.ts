@@ -12,9 +12,19 @@ export abstract class Figure extends IEventEmitter<FigureEventType, Figure> {
     super(emitEvent);
   }
 
-  protected draw(): void {
+  protected _draw(): void {
     console.log('Some figure');
   }
+
+  public get draw() {
+    const originalDraw = this._draw.bind(this);
+    return () => {
+      this._emitEvent('startdrawing', this);
+      originalDraw();
+      this._emitEvent('finishdrawing', this);
+    };
+  }
+
   public abstract getPerimeter(): number;
   public abstract getSquare(): number;
 

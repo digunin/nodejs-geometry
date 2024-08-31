@@ -13,7 +13,7 @@ export class Rectangle extends Polygon {
     this._type = 'rectangle';
   }
 
-  public override draw(): void {
+  protected override _draw(): void {
     console.log(`Rectangle with height ${this._height} and width ${this._width}`);
   }
 
