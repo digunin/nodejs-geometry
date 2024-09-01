@@ -19,6 +19,16 @@ describe('', () => {
     }
   });
 
+  test('perfect polygon whith wrong edges quantity', () => {
+    try {
+      geometry.createPerfectPolygon(1, 2);
+      fail('polygon constructor with such edges quantity must throw error');
+    } catch (err) {
+      const errorMessage = err instanceof Error ? err.message : '';
+      expect(errorMessage).toBe('Edge quantity of polygon must be atleast 3');
+    }
+  });
+
   test('triangle with wronge edges size', () => {
     try {
       geometry.createTriangle(10, 7, 20);
