@@ -20,7 +20,7 @@ export class Ellipse extends Figure {
   public override getPerimeter(): number {
     return this._computing.getEllipsePerimeter(this);
   }
-  public override getSquare(): number {
+  public override _getSquare(): number {
     return this._computing.getEllipseSquare(this);
   }
 

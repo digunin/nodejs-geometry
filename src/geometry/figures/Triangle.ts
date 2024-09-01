@@ -25,7 +25,7 @@ export class Triangle extends Polygon {
     return [angle1, angle2, angle3];
   }
 
-  public override getSquare(): number {
+  public override _getSquare(): number {
     return this._computing.getTriangleSquare(this);
   }
 

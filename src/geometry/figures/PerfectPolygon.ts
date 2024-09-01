@@ -21,7 +21,7 @@ export class PerfectPolygon extends Polygon {
     console.log(`${this._edges.length}-edges perfect polygon with edge size ${this._edge}`);
   }
 
-  public override getSquare(): number {
+  public override _getSquare(): number {
     return this._computing.getPerfectPolygonSquare(this);
   }
 

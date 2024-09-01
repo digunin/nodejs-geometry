@@ -17,7 +17,7 @@ export class Rectangle extends Polygon {
     console.log(`Rectangle with height ${this._height} and width ${this._width}`);
   }
 
-  public override getSquare(): number {
+  public override _getSquare(): number {
     return this._computing.getRectangleSquare(this);
   }
 

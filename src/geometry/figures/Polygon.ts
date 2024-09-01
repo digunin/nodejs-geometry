@@ -30,7 +30,7 @@ export class Polygon extends Figure {
     return this._computing.getPolygonPerimeter(this);
   }
 
-  public override getSquare(): number {
+  public override _getSquare() {
     return this._computing.getPolygonSquare(this);
   }
 

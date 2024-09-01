@@ -30,13 +30,22 @@ export abstract class Figure extends IEventEmitter<FigureEventType, Figure> {
    * и вызова метода _draw, переопредленного в подклассах
    */
   public draw() {
-      this._emitEvent('startdrawing', this);
+    this._emitEvent('startdrawing', this);
     this._draw();
-      this._emitEvent('finishdrawing', this);
+    this._emitEvent('finishdrawing', this);
+  }
+
+  public getSquare(): Promise<number> {
+    try {
+      return Promise.resolve(this._getSquare());
+    } catch (err) {
+      const errorMessage = err instanceof Error ? err.message : `Square computing of ${this.type} failed`;
+      return Promise.reject(errorMessage);
+    }
   }
 
   public abstract getPerimeter(): number;
-  public abstract getSquare(): number;
+  protected abstract _getSquare(): number;
 
   public get type() {
     return this._type;
