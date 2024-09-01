@@ -40,7 +40,7 @@ console.log('square: ', await rect.getSquare());
 const polygon = geometry.createPolygon(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
 polygon.draw();
 console.log('perimeter: ', polygon.getPerimeter());
-console.log(await polygon.getSquare());
+console.log(await polygon.getSquare().catch(() => -1));
 
 const start_callback = function name(event: FigureEvent) {
   console.log('\nstart drawing ' + event.target.type + ' >>>');
