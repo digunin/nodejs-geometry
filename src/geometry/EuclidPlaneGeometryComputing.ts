@@ -26,7 +26,7 @@ export class EuclidPlaneGeometryComputing extends GeometryComputing {
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   public override getPolygonSquare(polygon: Polygon): number {
-    throw new Error('getPolygonSquare not implemented');
+    return -1;
   }
 
   public override getEllipseSquare(ellipse: Ellipse): number {
