@@ -5,6 +5,12 @@ import type { FigureType, FigureEmitEventMethod, FigureEventType } from './types
 export abstract class Figure extends IEventEmitter<FigureEventType, Figure> {
   protected _type: FigureType = 'figure';
 
+  /**
+   * @param _computing Фигуры не вычисляют площадь и периметр самостоятельно,
+   * а используют методы, реализованные в наследнике класса GeometryComputing
+   *
+   * @param emitEvent Этот метод вызывается для генерации события
+   */
   constructor(
     protected _computing: GeometryComputing,
     emitEvent: FigureEmitEventMethod,
@@ -16,6 +22,13 @@ export abstract class Figure extends IEventEmitter<FigureEventType, Figure> {
     console.log('Some figure');
   }
 
+  /**
+   * Шаблонный метод
+   *
+   * Определяет порядок генерации событий "startdrawing" / "finishdrawing"
+   *
+   * и вызова метода _draw, переопредленного в подклассах
+   */
   public draw() {
       this._emitEvent('startdrawing', this);
     this._draw();

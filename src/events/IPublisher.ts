@@ -2,7 +2,10 @@ import { AbstractEvent, SubscriberCallback, Subscribers } from './types.js';
 
 export class IPublisher<T extends string, E> {
   constructor(protected _subscribers: Subscribers<T, E>) {}
-
+  /**
+   *Этот метод передается в конструктор класса IEventEmitter
+   *
+   */
   protected listenEvent(eventType: T, eventEmitter: E): void {
     this.notify({ eventType, target: eventEmitter });
   }

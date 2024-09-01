@@ -4,6 +4,10 @@ import { Polygon } from './figures/Polygon.js';
 import { Rectangle } from './figures/Rectangle.js';
 import { Triangle } from './figures/Triangle.js';
 
+/**
+ * Предоставляет экземплярам подклассов Figure интерфейс для вычисления площади или периметра
+ *
+ */
 export abstract class GeometryComputing {
   public abstract getPolygonPerimeter(polygon: Polygon): number;
   public abstract getEllipsePerimeter(ellipse: Ellipse): number;

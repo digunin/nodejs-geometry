@@ -10,6 +10,12 @@ import { FigureEventType } from './figures/types.js';
 import { IPublisher } from '../events/IPublisher.js';
 
 export abstract class AbstractGeometry extends IPublisher<FigureEventType, Figure> {
+  /**
+   * Фабрика предоставляет более удобный интерфейс для создания экземпляров объектов
+   *
+   * Наследование от IPublisher поззволяет слушать события экземпляров подклассов Figure
+   * и уведомлять об этом подписчиков
+   */
   constructor(protected _computing: GeometryComputing) {
     super({ startdrawing: [], finishdrawing: [] });
   }

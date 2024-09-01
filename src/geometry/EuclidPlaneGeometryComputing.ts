@@ -6,6 +6,15 @@ import { Triangle } from './figures/Triangle.js';
 import { GeometryComputing } from './GeometryComputing.js';
 
 export class EuclidPlaneGeometryComputing extends GeometryComputing {
+  /**
+   * Находит периметр эллипса по приближенной формуле Эйлера
+   *
+   * В случае равенстава двух радиусов (т.е.  если это окружность)
+   * формула не отличается от "два пи эр"
+   *
+   * Поэтому нет нужды переопределять метод getSquare в классе Circle
+   *
+   */
   public override getEllipsePerimeter(ellipse: Ellipse): number {
     const { minorRadius, majorRadius } = ellipse;
     return Math.sqrt((minorRadius * minorRadius + majorRadius * majorRadius) / 2) * 2 * Math.PI;
@@ -24,6 +33,16 @@ export class EuclidPlaneGeometryComputing extends GeometryComputing {
     return Math.PI * ellipse.minorRadius * ellipse.majorRadius;
   }
 
+  /**
+   * Находит площадь правильного многоугольника по фромуле: (апофема * периметр) / 2
+   *
+   * апофема - перпендикуляр из центра многоугольника к любой из сторон (или радиус вписаной окружности)
+   *
+   * апофема находится через тангенс половины угла равнобедренного треугольника,
+   * (чьим основанием является сторона многоугольника, а треться вершина - центр многоугольника)
+   * и половину стороны многоугольника
+   *
+   */
   public override getPerfectPolygonSquare(perfectPolygon: PerfectPolygon): number {
     const { edge, edgeQuantity } = perfectPolygon;
     const apothem = edge / 2 / Math.tan(Math.PI / edgeQuantity);
@@ -34,6 +53,20 @@ export class EuclidPlaneGeometryComputing extends GeometryComputing {
     return rect.width * rect.height;
   }
 
+  /**
+   * Находит площадь теругольника по формуле Герона
+   *
+   * (по трем сторонам)
+   *
+   *          ___________________
+   *         /
+   *     \  /  p(p-a)(p-b)(p-c)
+   *      \/
+   *
+   *     где p - половина периметра
+   *
+   * @returns Массив с тремя углами
+   */
   public override getTriangleSquare(triangle: Triangle): number {
     const {
       edges: [a, b, c],
@@ -42,6 +75,17 @@ export class EuclidPlaneGeometryComputing extends GeometryComputing {
     return Math.sqrt(semiPerimeter * (semiPerimeter - a) * (semiPerimeter - b) * (semiPerimeter - c));
   }
 
+  /**
+   * Находит угол между двумя сторонами треугольника по известным трем сторонам
+   * Угол выводится из теоремы косинусов:
+   *
+   * Квадрат стороны "AB" = (сумма квадратов "AC" и "BC") минус 2 * AC * BC * cos(ACB)
+   *
+   * если передать стороны, которых нет в данном треугольнике -
+   * будет брошено исключение
+   *
+   * @returns Угол в градусах
+   */
   public override getAngleBetweenTriangleEdges(edge1: number, edge2: number, triangle: Triangle): number {
     const counterEdge = triangle.edges.filter(edge => edge !== edge1 && edge !== edge2);
     if (counterEdge.length !== 1) {
