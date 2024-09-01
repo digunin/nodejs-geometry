@@ -4,10 +4,14 @@ import { AbstractGeometry } from '../geometry/AbstractGeometry.js';
 
 describe('geometry computing tests', () => {
   let geometry: AbstractGeometry;
+  const savedConsoleLog = console.log;
 
   beforeEach(() => {
     geometry = new DefaultGeometry(new EuclidPlaneGeometryComputing());
   });
+
+  beforeAll(() => (console.log = jest.fn()));
+  afterAll(() => (console.log = savedConsoleLog));
 
   test('polygon perimeter', () => {
     const polygon = geometry.createPolygon(3, 4, 5);

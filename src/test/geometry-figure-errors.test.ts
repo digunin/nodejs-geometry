@@ -4,10 +4,15 @@ import { EuclidPlaneGeometryComputing } from '../geometry/EuclidPlaneGeometryCom
 
 describe('', () => {
   let geometry: AbstractGeometry;
+  const savedConsoleLog = console.log;
 
   beforeEach(() => {
+    console.log = jest.fn();
     geometry = new DefaultGeometry(new EuclidPlaneGeometryComputing());
   });
+
+  beforeAll(() => (console.log = jest.fn()));
+  afterAll(() => (console.log = savedConsoleLog));
 
   test('polygon whith wrong edges size', () => {
     try {

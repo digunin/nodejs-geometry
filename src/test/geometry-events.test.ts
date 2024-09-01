@@ -2,7 +2,11 @@ import { DefaultGeometry } from '../geometry/DefaultGeometry.js';
 import { EuclidPlaneGeometryComputing } from '../geometry/EuclidPlaneGeometryComputing.js';
 
 describe('geometry computing tests', () => {
+  const savedConsoleLog = console.log;
   const geometry = new DefaultGeometry(new EuclidPlaneGeometryComputing());
+
+  beforeAll(() => (console.log = jest.fn()));
+  afterAll(() => (console.log = savedConsoleLog));
 
   const polygon = geometry.createPolygon(1, 1, 1, 1, 1);
   const perfectPolygon = geometry.createPerfectPolygon(1, 8);
