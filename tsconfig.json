@@ -5,8 +5,9 @@
     "outDir": "dist",
     "module": "NodeNext",
     "target": "ES2018",
-    "noImplicitOverride": true
+    "noImplicitOverride": true,
+    "types": ["node", "jest"]
   },
   "include": ["./src"],
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules", "src/test"]
 }
