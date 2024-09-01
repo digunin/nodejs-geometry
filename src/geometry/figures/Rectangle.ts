@@ -3,14 +3,15 @@ import { Polygon } from './Polygon.js';
 import { FigureEmitEventMethod } from './types.js';
 
 export class Rectangle extends Polygon {
-  constructor(
-    computing: GeometryComputing,
-    emitEvent: FigureEmitEventMethod,
-    protected _width: number,
-    protected _height: number,
-  ) {
-    super(computing, emitEvent, _width, _height, _width, _height);
+  protected _width = 0;
+  protected _height = 0;
+  constructor(computing: GeometryComputing, emitEvent: FigureEmitEventMethod, width: number, height: number) {
+    width = Math.abs(width);
+    height = Math.abs(height);
+    super(computing, emitEvent, width, height, width, height);
     this._type = 'rectangle';
+    this._width = width;
+    this._height = height;
   }
 
   protected override _draw(): void {

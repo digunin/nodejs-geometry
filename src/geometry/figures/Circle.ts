@@ -3,13 +3,12 @@ import { Ellipse } from './Ellipse.js';
 import { FigureEmitEventMethod } from './types.js';
 
 export class Circle extends Ellipse {
-  constructor(
-    computing: GeometryComputing,
-    emitEvent: FigureEmitEventMethod,
-    protected _radius: number,
-  ) {
-    super(computing, emitEvent, _radius, _radius);
+  protected _radius: number;
+  constructor(computing: GeometryComputing, emitEvent: FigureEmitEventMethod, radius: number) {
+    radius = Math.abs(radius);
+    super(computing, emitEvent, radius, radius);
     this._type = 'circle';
+    this._radius = radius;
   }
 
   protected override _draw(): void {

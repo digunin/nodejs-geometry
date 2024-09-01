@@ -15,7 +15,7 @@ export class Polygon extends Figure {
   ) {
     super(computing, emitEvent);
     this._type = 'polygon';
-    const allEdges = [edge1, edge2, edge3, ...edges];
+    const allEdges = [edge1, edge2, edge3, ...edges].map(edge => Math.abs(edge));
     if (!this.isCorrectEdges(allEdges)) {
       throw new Error('A polygon with such edges is impossible');
     }

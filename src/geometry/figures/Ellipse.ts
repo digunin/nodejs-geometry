@@ -3,14 +3,21 @@ import { Figure } from './figure.js';
 import { FigureEmitEventMethod } from './types.js';
 
 export class Ellipse extends Figure {
+  protected _minorRadius = 0;
+  protected _majorRadius = 0;
   constructor(
     computing: GeometryComputing,
     emitEvent: FigureEmitEventMethod,
-    protected _minorRadius: number,
-    protected _majorRadius: number,
+    minorRadius: number,
+    majorRadius: number,
   ) {
+    if (minorRadius > majorRadius) {
+      [minorRadius, majorRadius] = [majorRadius, minorRadius];
+    }
     super(computing, emitEvent);
     this._type = 'ellipse';
+    this._minorRadius = Math.abs(minorRadius);
+    this._majorRadius = Math.abs(majorRadius);
   }
 
   protected override _draw() {

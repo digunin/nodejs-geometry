@@ -3,18 +3,16 @@ import { Polygon } from './Polygon.js';
 import { FigureEmitEventMethod } from './types.js';
 
 export class PerfectPolygon extends Polygon {
-  constructor(
-    computing: GeometryComputing,
-    emitEvent: FigureEmitEventMethod,
-    protected _edge: number,
-    edgeQuantity: number,
-  ) {
+  protected _edge = 0;
+  constructor(computing: GeometryComputing, emitEvent: FigureEmitEventMethod, edge: number, edgeQuantity: number) {
+    edge = Math.abs(edge);
     if (edgeQuantity < 3) {
       throw new Error('Edge quantity of polygon must be atleast 3');
     }
-    const [edge1, edge2, edge3, ...rest] = Array<number>(edgeQuantity).fill(_edge);
+    const [edge1, edge2, edge3, ...rest] = Array<number>(edgeQuantity).fill(edge);
     super(computing, emitEvent, edge1, edge2, edge3, ...rest);
     this._type = 'perfect polygon';
+    this._edge = edge;
   }
 
   protected override _draw(): void {

@@ -6,11 +6,14 @@ export class Triangle extends Polygon {
   constructor(
     computing: GeometryComputing,
     emitEvent: FigureEmitEventMethod,
-    edg1: number,
+    edge1: number,
     edge2: number,
     edge3: number,
   ) {
-    super(computing, emitEvent, edg1, edge2, edge3);
+    edge1 = Math.abs(edge1);
+    edge2 = Math.abs(edge2);
+    edge3 = Math.abs(edge3);
+    super(computing, emitEvent, edge1, edge2, edge3);
     this._type = 'triangle';
   }
 
