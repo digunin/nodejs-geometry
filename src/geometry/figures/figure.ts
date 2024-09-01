@@ -16,13 +16,10 @@ export abstract class Figure extends IEventEmitter<FigureEventType, Figure> {
     console.log('Some figure');
   }
 
-  public get draw() {
-    const originalDraw = this._draw.bind(this);
-    return () => {
+  public draw() {
       this._emitEvent('startdrawing', this);
-      originalDraw();
+    this._draw();
       this._emitEvent('finishdrawing', this);
-    };
   }
 
   public abstract getPerimeter(): number;
