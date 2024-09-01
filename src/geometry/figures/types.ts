@@ -1,4 +1,4 @@
-import { AbstractEvent, EmitEventMethod, SubscriberCallback } from '../../events/types.js';
+import { AbstractEvent, EmitEventMethod, SubscriberCallback } from '../events/types.js';
 import { Figure } from './figure.js';
 
 export type FigureType = 'figure' | 'polygon' | 'ellipse' | 'rectangle' | 'circle' | 'perfect polygon' | 'triangle';

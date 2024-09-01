@@ -7,7 +7,7 @@ import { Rectangle } from './figures/Rectangle.js';
 import { Triangle } from './figures/Triangle.js';
 import { GeometryComputing } from './GeometryComputing.js';
 import { FigureEventType } from './figures/types.js';
-import { IPublisher } from '../events/IPublisher.js';
+import { IPublisher } from './events/IPublisher.js';
 
 export abstract class AbstractGeometry extends IPublisher<FigureEventType, Figure> {
   /**

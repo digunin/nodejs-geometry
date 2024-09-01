@@ -1,4 +1,4 @@
-import { IEventEmitter } from '../../events/IEventEmitter.js';
+import { IEventEmitter } from '../events/IEventEmitter.js';
 import { GeometryComputing } from '../GeometryComputing.js';
 import type { FigureType, FigureEmitEventMethod, FigureEventType } from './types.js';
 
