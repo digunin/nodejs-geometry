@@ -8,16 +8,19 @@ import { Triangle } from './figures/Triangle.js';
 import { GeometryComputing } from './GeometryComputing.js';
 import { FigureEventType } from './figures/types.js';
 import { IPublisher } from './events/IPublisher.js';
+import { EuclidPlaneGeometryComputing } from './EuclidPlaneGeometryComputing.js';
 
 export abstract class AbstractGeometry extends IPublisher<FigureEventType, Figure> {
+  protected _computing: GeometryComputing = new EuclidPlaneGeometryComputing();
   /**
    * Фабрика предоставляет более удобный интерфейс для создания экземпляров объектов
    *
    * Наследование от IPublisher поззволяет слушать события экземпляров подклассов Figure
    * и уведомлять об этом подписчиков
    */
-  constructor(protected _computing: GeometryComputing) {
+  constructor(computing?: GeometryComputing) {
     super({ startdrawing: [], finishdrawing: [] });
+    if (computing) this._computing = computing;
   }
   public abstract createCircle(radius: number): Circle;
   public abstract createEllipse(minorRadius: number, majorRadius: number): Ellipse;

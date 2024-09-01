@@ -1,9 +1,8 @@
 import { DefaultGeometry } from './geometry/DefaultGeometry.js';
-import { EuclidPlaneGeometryComputing } from './geometry/EuclidPlaneGeometryComputing.js';
 import { Polygon } from './geometry/figures/Polygon.js';
 import { FigureEvent } from './geometry/figures/types.js';
 
-const geometry = new DefaultGeometry(new EuclidPlaneGeometryComputing());
+const geometry = new DefaultGeometry();
 const triangle = geometry.createTriangle(3, 4, 5);
 triangle.draw();
 console.log(triangle.type);
