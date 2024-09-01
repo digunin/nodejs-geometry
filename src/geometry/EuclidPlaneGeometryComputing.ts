@@ -44,8 +44,8 @@ export class EuclidPlaneGeometryComputing extends GeometryComputing {
    *
    */
   public override getPerfectPolygonSquare(perfectPolygon: PerfectPolygon): number {
-    const { edge, edgeQuantity } = perfectPolygon;
-    const apothem = edge / 2 / Math.tan(Math.PI / edgeQuantity);
+    const { edge, edgesQuantity } = perfectPolygon;
+    const apothem = edge / 2 / Math.tan(Math.PI / edgesQuantity);
     return (apothem * this.getPolygonPerimeter(perfectPolygon)) / 2;
   }
 

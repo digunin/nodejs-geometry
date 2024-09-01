@@ -46,7 +46,7 @@ export class Polygon extends Figure {
     return [...this._edges];
   }
 
-  public get edgeQuantity() {
+  public get edgesQuantity() {
     return this._edges.length;
   }
 }
