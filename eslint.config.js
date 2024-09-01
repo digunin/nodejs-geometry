@@ -19,13 +19,10 @@ export default tseslint.config(
         ...globals.node,
         ...globals.es2020,
       },
-      parserOptions: {
-        project: ['tsconfig.json'],
-      },
     },
   },
   {
-    files: ['src/**/*.{ts,tsx}'],
+    files: ['src/**/*.{ts,tsx}', 'src/test'],
     rules: {
       'prefer-const': 'error',
       'max-lines': ['warn', { max: 124 }],
