@@ -10,10 +10,14 @@ const geometry = new DefaultGeometry();
 const finishDrawCallback = function(event: FigureEvent) {
   console.log('<<< finish drawing ' + event.target.type + '\n');
 };
-geometry.subscribe('finishdrawing', finishDrawCallback)
+geometry.subscribe('finishdrawing', finishDrawCallback);
 
 const triangle = geometry.createTriangle(3, 4, 5);
 triangle.draw();
+
+// output:
+// Triangle with edges 3, 4, 5
+// <<< finish drawing triangle
 ```
 
 ## DefaultGeometry
@@ -21,19 +25,19 @@ triangle.draw();
 Содержит методы для создания фигур и методы подписки на события и отписки от них
 
 ```typescript
-createCircle(radius: number)
+createCircle(radius: number);
 ```
 Создает круг с радиусом <code>radius</code>
 
 ---
 ```typescript
-createEllipse(minorRadius: number, majorRadius: number)
+createEllipse(minorRadius: number, majorRadius: number);
 ```
 Создает эллипс с полуосями <code>minorRadius</code> и <code>majorRadius</code>
 
 ---
 ```typescript
-createPolygon(edge1: number, edge2: number, edge3: number, ...edges: number[])
+createPolygon(edge1: number, edge2: number, edge3: number, ...edges: number[]);
 ```
 Создает многоугольник с произвольным числом сторон, но не меньше трех
 
@@ -43,9 +47,9 @@ createPolygon(edge1: number, edge2: number, edge3: number, ...edges: number[])
 
 ---
 ```typescript
-createPerfectPolygon(edge: number, quantity: number)
+createPerfectPolygon(edge: number, quantity: number);
 ```
-Создает правильный многоугольник с размерой стороны <code>edge</code> и количеством сторон <code>quantity</code>
+Создает правильный многоугольник с размером стороны <code>edge</code> и количеством сторон <code>quantity</code>
 
 :warning::warning::warning: **Если quantity меньше чем 3 - будет брошено исключение**
 
@@ -53,13 +57,13 @@ createPerfectPolygon(edge: number, quantity: number)
 
 ---
 ```typescript
-createRectangle(width: number, height: number)
+createRectangle(width: number, height: number);
 ```
 Создает прямоугольник со сторонами <code>width</code> и <code>height</code>
 
 ---
 ```typescript
-createTriangle(edge1: number, edge2: number, edge3: number)
+createTriangle(edge1: number, edge2: number, edge3: number);
 ```
 Создает треугольник со сторонами <code>edge1</code>, <code>edge2</code>, <code>edge3</code>
 
@@ -67,10 +71,11 @@ createTriangle(edge1: number, edge2: number, edge3: number)
 
 ---
 ```typescript
-subscribe(event:EventType, callback:(e:Event)=>void)
-unsubscribe(event:EventType, callback:(e:Event)=>void)
+
+subscribe(event:EventType, callback:(e:Event)=>void);
+unsubscribe(event:EventType, callback:(e:Event)=>void);
 ```
-Подписка и на события рисования и отписка от них.
+Подписка на события рисования и отписка от них.
 <code>EventType</code> и <code>Event</code> это
 ``` typescript
 type EventType = "startdrawing" | "finishdrawing"
@@ -92,14 +97,14 @@ draw()
 
 ---
 ```typescript
-getPerimeter()
+getPerimeter();
 ```
 
 Возвращает периметр фигуры
 
 ---
 ```typescript
-getSquare()
+getSquare();
 ```
 Возвращает площадь фигуры
 
@@ -162,7 +167,7 @@ get edgesQuantity
 ---
 ### Triangle
 ```typescript
-public getAngle(edge1: number, edge2: number)
+getAngle(edge1: number, edge2: number);
 ```
 Возвращает угол (в градусах) между сторонами <code>edge1</code> и <code>edge2</code>
 
