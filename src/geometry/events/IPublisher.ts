@@ -15,13 +15,13 @@ export class IPublisher<T extends string, E> {
   }
 
   public subscribe(type: T, callback: SubscriberCallback<AbstractEvent<T, E>>) {
-    if (!this._subscribers[type].includes(callback)) {
-      this._subscribers[type].push(callback);
-    }
+    if (this._subscribers[type].includes(callback)) return;
+    this._subscribers[type].push(callback);
   }
 
   public unsubscribe(type: T, callback: SubscriberCallback<AbstractEvent<T, E>>) {
     const index = this._subscribers[type].indexOf(callback);
+    if (index === -1) return;
     this._subscribers[type].splice(index, 1);
   }
 }
